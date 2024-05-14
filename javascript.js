@@ -30,16 +30,17 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-let humanSelection = prompt('Choose between rock, paper or scissors', '');
-let newHumanSelection = humanSelection.toLowerCase();
+function getHumanChoice() { 
+    let humanSelection = prompt('Choose between rock, paper or scissors', '');
+    let newHumanSelection = humanSelection.toLowerCase();
 
-if (newHumanSelection==='paper' || newHumanSelection===`rock` || newHumanSelection===`scissors`) {
-    let finalHumanSelection = newHumanSelection;
-    return finalHumanSelection;
-}
-else {
-    alert('YOU HAVE TO Choose between rock, paper or scissors', '')}
+    if (newHumanSelection==='paper' || newHumanSelection===`rock` || newHumanSelection===`scissors`) {
+        let finalHumanSelection = newHumanSelection;
+        return finalHumanSelection;
+    }
+    else {
+        alert('YOU HAVE TO Choose between rock, paper or scissors')
+    }
 };
 
 
@@ -62,7 +63,7 @@ function playGame() {
         console.log(`computer wins all game`)
     }
 
-    if(playerScore<5 || computerScore < 5 || currentRound <10) {
+    while (playerScore<5 && computerScore < 5 && currentRound <10) {
         */
 
         function playRound()
@@ -72,7 +73,10 @@ function playGame() {
             console.log(`player chose: ${humanSelection}`);
             console.log(`computer chose: ${computerSelection}`);
             
-            if(humanSelection != `rock` && humanSelection != `paper` && humanSelection != `scissors`){
+            if(humanSelection != `rock` && 
+               humanSelection != `paper` && 
+               humanSelection != `scissors`)
+               {
                 console.log(`YOU HAD TO CHOOSE BETWEEN ROCK, PAPER, AND SCISSORS, THE PROGRAM WILL RESET UNTIL YOU CHOOSE CORRECTLY`)
                 return;
 
@@ -84,7 +88,11 @@ function playGame() {
                 console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
                 return;
             } 
-            else if (humanSelection===`rock` && computerSelection ===`paper` || humanSelection===`paper` && computerSelection === 'scissors' || humanSelection=== `scissors` && computerSelection === `rock`) {
+            else if (
+                humanSelection===`rock` && computerSelection === `paper` || 
+                humanSelection===`paper` && computerSelection === 'scissors' || 
+                humanSelection=== `scissors` && computerSelection === `rock`) 
+            {
                 console.log(`computer wins this round`)
                 computerScore++;
                 currentRound++;
@@ -93,7 +101,7 @@ function playGame() {
                 
             }
             else {
-                console.log(`player wins this round`)
+               console.log(`player wins this round`)
                playerScore++;
                currentRound++;
                console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
