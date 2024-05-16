@@ -81,12 +81,10 @@ function playRound(choice)
     if (computerScore === 5) {
         finalWinner.textContent = `COMPUTER WON EVERYTHING`;
         return;
-        
        }
        else if (playerScore === 5) {
         finalWinner.textContent = `PLAYER WON EVERYTHING`;
         return;
-        
        }
 
 
@@ -119,6 +117,14 @@ function playRound(choice)
        currentRound++;
        winner.textContent = `computer won this round`;
        score.textContent = (`Computer Score: ${computerScore}, Player Score: ${playerScore}, Draws: ${draw} Current Round: ${currentRound}`);
+       if (computerScore === 5) {
+        finalWinner.textContent = `COMPUTER WON EVERYTHING`;
+        return;
+       }
+       else if (playerScore === 5) {
+        finalWinner.textContent = `PLAYER WON EVERYTHING`;
+        return;
+       }
     //    console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
        return;
        
@@ -129,13 +135,26 @@ function playRound(choice)
       currentRound++;
       winner.textContent = `player won this round`;
       score.textContent = (`Computer Score: ${computerScore}, Player Score: ${playerScore}, Draws: ${draw} Current Round: ${currentRound}`);
+      if (computerScore === 5) {
+        finalWinner.textContent = `COMPUTER WON EVERYTHING`;
+        return;
+       }
+       else if (playerScore === 5) {
+        finalWinner.textContent = `PLAYER WON EVERYTHING`;
+        return;
+       }
     //   console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
+    
       return;
 
    }
 
    
 };
+
+
+
+
 // playRound();
 
 
