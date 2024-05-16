@@ -2,6 +2,7 @@
 
 let playerScore = 0;
 let computerScore = 0;
+let draw = 0;
 let currentRound = 0;
 let stopGame = 0;
 
@@ -38,13 +39,15 @@ menu.addEventListener('click', (event) => {
 switch(target.id){
 
     case `buttonRock`:
-        console.log(`buttonRock was clicked`);
+        playRound(`rock`)
         break;
+
     case `buttonPaper`:
-        console.log(`buttonPaper was clicked`);
+        playRound(`paper`)
         break;
+
     case `buttonScissors`:
-        console.log(`buttonScissors was clicked`);
+        playRound(`scissors`)
         break;
 
 }
@@ -52,61 +55,57 @@ switch(target.id){
 
 });
 
+let winner = document.querySelector(`#winner`);
+let score = document.querySelector(`#score`);
+let selection = document.querySelector(`#selection`);
+let finalWinner = document.querySelector(`#finalWinner`);
 
 
 
 
 
 
-
-
-
-function getHumanChoice() { 
-    let humanSelection = prompt('Choose between rock, paper or scissors', '');
-
-    let newHumanSelection = humanSelection.toLowerCase();
-
-    if (newHumanSelection==='paper' || newHumanSelection===`rock` || newHumanSelection===`scissors`) {
-        let finalHumanSelection = newHumanSelection;
-        return finalHumanSelection;
+function getHumanChoice(a) { 
+    let humanSelection = `${a}`;
+        return humanSelection;
     }
    
 
-    else {
-        alert('YOU HAVE TO Choose between rock, paper or scissors');
-    }
-};
 
 
 
 
-function playRound()
+function playRound(choice)
 {    
 
+    if (computerScore === 5) {
+        finalWinner.textContent = `COMPUTER WON EVERYTHING`;
+        return;
+        
+       }
+       else if (playerScore === 5) {
+        finalWinner.textContent = `PLAYER WON EVERYTHING`;
+        return;
+        
+       }
+
 
    
-   let humanSelection = getHumanChoice();
-   if (humanSelection === null){
-       return;   
-}
+   let humanSelection = getHumanChoice(choice);
    let computerSelection = getComputerChoice();
-   console.log(`player chose: ${humanSelection}`);
-   console.log(`computer chose: ${computerSelection}`);
-   
-   if(humanSelection != `rock` && 
-      humanSelection != `paper` && 
-      humanSelection != `scissors`)
-      {
-       console.log(`YOU HAD TO CHOOSE BETWEEN ROCK, PAPER, AND SCISSORS, THE PROGRAM WILL RESET UNTIL YOU CHOOSE CORRECTLY`)
-       stopGame = 1;
-       return;
 
-   }
+//    console.log(`player chose: ${humanSelection}`);
+   selection.textContent = (`Player chose: ${humanSelection} || Computer chose: ${computerSelection}`);
+//    console.log(`computer chose: ${computerSelection}`);
+  
 
-   else if (humanSelection===computerSelection) {
-       console.log(`draw`)
+   if (humanSelection===computerSelection) {
+    //    console.log(`draw`);
        currentRound++;
-       console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
+       draw++;
+       winner.textContent = `draw`;
+       score.textContent = (`Computer Score: ${computerScore}, Player Score: ${playerScore}, Draws: ${draw} Current Round: ${currentRound}`);
+    //    console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
        return;
    } 
    else if (
@@ -114,21 +113,28 @@ function playRound()
        humanSelection===`paper` && computerSelection === 'scissors' || 
        humanSelection=== `scissors` && computerSelection === `rock`) 
    {
-       console.log(`computer wins this round`)
+    //    console.log(`computer wins this round`)
+       
        computerScore++;
        currentRound++;
-       console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
+       winner.textContent = `computer won this round`;
+       score.textContent = (`Computer Score: ${computerScore}, Player Score: ${playerScore}, Draws: ${draw} Current Round: ${currentRound}`);
+    //    console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
        return;
        
    }
    else {
-      console.log(`player wins this round`)
+    //   console.log(`player wins this round`)
       playerScore++;
       currentRound++;
-      console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
+      winner.textContent = `player won this round`;
+      score.textContent = (`Computer Score: ${computerScore}, Player Score: ${playerScore}, Draws: ${draw} Current Round: ${currentRound}`);
+    //   console.log(`Computer Score: ${computerScore}, Player Score: ${playerScore}, Current Round: ${currentRound}`);
       return;
 
    }
+
+   
 };
 // playRound();
 
