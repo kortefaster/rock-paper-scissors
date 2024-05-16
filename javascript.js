@@ -3,6 +3,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let currentRound = 0;
+let stopGame = 0;
 
 function getComputerChoice() {
     let resultPc;
@@ -63,7 +64,7 @@ function playGame() {
         console.log(`computer wins all game`)
     }
 
-    while (playerScore<5 && computerScore < 5 && currentRound <10) {
+    while (playerScore<5 && computerScore < 5 && currentRound <10 && stopGame==0) {
         */
 
         function playRound()
@@ -78,6 +79,7 @@ function playGame() {
                humanSelection != `scissors`)
                {
                 console.log(`YOU HAD TO CHOOSE BETWEEN ROCK, PAPER, AND SCISSORS, THE PROGRAM WILL RESET UNTIL YOU CHOOSE CORRECTLY`)
+                stopGame = 1;
                 return;
 
             }
@@ -117,11 +119,38 @@ function playGame() {
         playRound();
         // console.log(computerScore, playerScore);
     }
-    
+
+
+
 
 
 playGame();
+
+
+function isPrime(){
     
+let numberInput;
+
+ do {
+    numberInput = prompt(`choose a number`, `0`)
+    for (let index = 2; index <= numberInput/2; ) {
+        if (numberInput%index===0){
+            alert('not prime')
+            break;    
+        }
+        else if(index===Math.floor(numberInput/2)){
+            alert(`prime`);
+            break;
+        }
+        else{
+            index++
+        };
+        
+    }
+} while (numberInput)
+
+}
+
 
 
 
